@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Principal component tests should show a list of categories 1`] = `
+<Fragment>
+  <h1>
+    Giffy
+  </h1>
+  <InputCategory
+    setCategories={[Function]}
+  />
+  <hr />
+  <div
+    className="container"
+  >
+    <GifGrid
+      category="One Punch"
+      key="One Punch"
+    />
+    <GifGrid
+      category="Dragon Ball"
+      key="Dragon Ball"
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`Principal component tests should show the component correctly 1`] = `
+<Fragment>
+  <h1>
+    Giffy
+  </h1>
+  <InputCategory
+    setCategories={[Function]}
+  />
+  <hr />
+  <div
+    className="container"
+  />
+</Fragment>
+`;
