@@ -1,0 +1,30 @@
+### REST CLIENT Extension
+@hostname = http://localhost
+@port = 4000
+@host = {{hostname}}:{{port}}
+@base= api/auth
+@contentType = application/json
+
+
+
+POST {{host}}/{{base}} HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "email": "jesus@email.com",
+  "password":"Jesus1995"
+}
+###
+
+
+POST {{host}}/{{base}}/register HTTP/1.1 
+content-type: {{contentType}}
+
+{
+  "name": "Jesus",
+  "email": "jesus@email.com",
+  "password":"Jesus1995"
+}
+
+###
+GET {{host}}/{{base}}/validate HTTP/1.1
