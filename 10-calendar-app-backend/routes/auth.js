@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { addUser, loginUser, validateToken } from '../controllers/auth.js';
 import { check } from 'express-validator';
 import { strongPasswordConfig } from './expressValidator.js';
+import { fieldValidator } from '../middlewares/field-validators.js';
+
 const router = Router();
 
 // Authentication:
@@ -17,17 +19,22 @@ router.post(
 			'password',
 			'The password must be strong[+8 characters and upper case and lower case]'
 		).isStrongPassword(strongPasswordConfig),
+		fieldValidator,
 	],
 	addUser
 );
-router.post('/',
-  [
-    check('email', 'The email is required').isEmail(),
-    check(
+router.post(
+	'/',
+	[
+		check('email', 'The email is required').isEmail(),
+		check(
 			'password',
 			'The password must be strong[+8 characters and upper case and lower case]'
-		).isStrongPassword(strongPasswordConfig),  
-  ], loginUser);
+		).isStrongPassword(strongPasswordConfig),
+		fieldValidator,
+	],
+	loginUser
+);
 router.get('/validate', validateToken);
 
 export default router;
