@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
 import router from './routes/auth.js'
+import cors from 'cors'
 import { dbConnection } from './database/config.js';
 
 const dotEnv = dotenv.config();
@@ -10,6 +11,9 @@ const app = express();
 
 // DB
 dbConnection();
+
+//CORS
+app.use(cors())
 
 // Public directory
 app.use(express.static('public'));

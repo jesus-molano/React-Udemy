@@ -3,6 +3,7 @@ import { addUser, loginUser, validateToken } from '../controllers/auth.js';
 import { check } from 'express-validator';
 import { strongPasswordConfig } from './expressValidator.js';
 import { fieldValidator } from '../middlewares/field-validators.js';
+import { jwtValidator } from '../middlewares/jwt-validator.js';
 
 const router = Router();
 
@@ -35,6 +36,6 @@ router.post(
 	],
 	loginUser
 );
-router.get('/validate', validateToken);
+router.get('/validate', jwtValidator, validateToken);
 
 export default router;

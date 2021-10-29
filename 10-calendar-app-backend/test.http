@@ -6,26 +6,28 @@
 @contentType = application/json
 
 
-
+// Login User
 POST {{host}}/{{base}} HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "email": "jesus@email.com",
-  "password":"Jesus1995"
+  "email": "sam@email.com",
+  "password":"Sam12345"
 }
 ###
 
-
+// Register New User
 POST {{host}}/{{base}}/register HTTP/1.1 
 content-type: {{contentType}}
 
 {
-  "name": "Jesus",
-  "email": "jesus@email.com",
-  "password":"Jesus1995"
+  "name": "Samantha",
+  "email": "sam@email.com",
+  "password":"Sam12345"
 }
 
 ###
 GET {{host}}/{{base}}/validate HTTP/1.1
+// Headers
+x-token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTdiZjczNGFmZWE0NDAyMmY3YTg0MzAiLCJuYW1lIjoiU2FtYW50aGEiLCJpYXQiOjE2MzU1MTQ0OTEsImV4cCI6MTYzNTUyMTY5MX0.Vb2lXrdWbWtbGRU68QnuA9wlxltCk2kZ3kktgq8YPNE'
 
