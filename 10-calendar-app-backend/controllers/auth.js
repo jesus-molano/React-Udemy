@@ -1,5 +1,5 @@
-import { User } from '../models/User.js';
 import bcrypt from 'bcryptjs'
+import { User } from '../models/User.js';
 import { generateJWT } from '../helpers/jwt.js';
 
 export const addUser = async (req, res) => {
@@ -57,8 +57,6 @@ export const loginUser = async (req, res) => {
 
 		// Generate the JWT
 		const token = await generateJWT(user.id, user.name);
-
-
 		res.json({
 			ok: true,
 			uid: user.id,
@@ -81,6 +79,8 @@ export const validateToken = async(req, res) => {
 
 	res.json({
 		ok: true,
-		token,
+		uid,
+		name,
+		token
 	});
 };

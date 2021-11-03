@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
-import router from './routes/auth.js'
+import routerAuth from './routes/auth.js'
+import routerEvents from './routes/events.js'
 import cors from 'cors'
 import { dbConnection } from './database/config.js';
 
@@ -22,7 +23,8 @@ app.use(express.static('public'));
 app.use(express.json())
 
 // Routes
-app.use('/api/auth', router);
+app.use('/api/auth', routerAuth);
+app.use('/api/events', routerEvents);
 
 // Listen request
 app.listen(process.env.PORT, () => console.log(`Server running on port: ${process.env.PORT}`));

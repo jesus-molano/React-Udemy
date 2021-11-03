@@ -8,9 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { customStyles } from './customStyles';
 import { uiCloseModal } from '../../actions/ui';
 import {
-	eventAddNew,
 	eventCleanActive,
-	eventUpdated,
+	eventStartAddNew,
+	eventStartUpdate
 } from '../../actions/events';
 
 import 'react-datetime-picker/dist/DateTimePicker.css';
@@ -91,17 +91,10 @@ const CalendarModal = () => {
 		}
 
 		if (activeEvent) {
-			dispatch(eventUpdated(formValues));
+			dispatch(eventStartUpdate(formValues));
 		} else {
 			dispatch(
-				eventAddNew({
-					...formValues,
-					id: new Date().getTime(),
-					user: {
-						_id: '123',
-						name: 'Jesus',
-					},
-				})
+				eventStartAddNew(formValues)
 			);
 		}
 

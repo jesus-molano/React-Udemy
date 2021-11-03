@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import { messages, momentES } from '../../config/languageES-SP';
 import { uiOpenModal } from '../../actions/ui';
-import { eventCleanActive, eventSetActive } from '../../actions/events';
-import { eventStyleGetter } from './funtions';
+import { eventCleanActive, eventSetActive, eventStartLoading } from '../../actions/events';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useEffect } from 'react';
 
 moment.updateLocale('es', momentES);
 const localizer = momentLocalizer(moment);
@@ -22,10 +22,15 @@ const CalendarPage = () => {
 	const dispatch = useDispatch();
 
 	const { events, activeEvent  } = useSelector((state) => state.calendar);
+	const {uid} = useSelector(state => state.auth)
 
 	const [lastView, setLastView] = useState(
 		localStorage.getItem('lastView') || 'month'
 	);
+
+	useEffect(() => {
+		dispatch(eventStartLoading())
+	}, [dispatch])
 
 	const onViewChange = (e) => {
 		setLastView(e);
@@ -42,6 +47,18 @@ const CalendarPage = () => {
 
 	const onSelectEvent = (e) => {
 		dispatch(eventSetActive(e));
+	};
+
+	const eventStyleGetter = (event, start, end, isSelected) => {
+		const style = {
+			backgroundColor: ( uid === event.user._id ) ? '#F01341': '#465660',
+			borderRadius: '0.6rem',
+			display: 'block',
+			color: '#fff',
+		};
+		return {
+			style,
+		};
 	};
 
 	return (

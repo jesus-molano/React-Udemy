@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { eventDeleted } from '../../actions/events';
+import { eventStartDeleted } from '../../actions/events';
 import { uiOpenModal } from '../../actions/ui';
 
 const FloatBtn = ({ type }) => {
@@ -11,7 +11,7 @@ const FloatBtn = ({ type }) => {
   };
   
   const handleDeleteEvent = () => {
-    dispatch(eventDeleted());
+    dispatch(eventStartDeleted());
   }
 
 	return (

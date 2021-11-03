@@ -55,6 +55,7 @@
 
 		.form-group {
 			width: 100%;
+			margin: 0;
 
 			input {
 				border-radius: 0.6rem;
@@ -154,8 +155,25 @@
 		color: darken($color: $red, $amount: 10);
 	}
 }
+.redirectToRegister{
+	text-align: center;
+	margin-top: 1rem;
+	& a{
+		color: #0062cc;
+		font-weight: 600;
+	}
+}
+.redirectToLogin{
+	color: #fff;
+	text-align: center;
+	margin-top: 1rem;
+	& a{
+		color: #333;
+		font-weight: 600;
+	}
+}
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
 
 	.login-form, .register-form{
 		width: 95%;
